@@ -12,8 +12,6 @@ public class JapshopApplication {
 		hello.setData("minje");
 		String data = hello.getData();
 		System.out.println(data);
-
-
 		SpringApplication.run(JapshopApplication.class, args);
 	}
 
