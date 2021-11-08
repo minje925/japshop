@@ -3,6 +3,7 @@ package jpabook.japshop.service;
 import jpabook.japshop.Repository.ItemRepository;
 import jpabook.japshop.Repository.MemberRepository;
 import jpabook.japshop.Repository.OrderRepository;
+import jpabook.japshop.Repository.OrderSearch;
 import jpabook.japshop.domain.Delivery;
 import jpabook.japshop.domain.Member;
 import jpabook.japshop.domain.Order;
@@ -11,6 +12,8 @@ import jpabook.japshop.domain.item.Item;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @Transactional(readOnly = true)
@@ -42,6 +45,7 @@ public class OrderService {
         orderRepository.save(order);
         // Delivery를 객체로 따로 생성한 이유 =>
         // order가 persist될 때, cascade.ALL로 설정된 테이블도 자동으로 persist해준다.
+        System.out.println("주문은 완료되었습니다.");
         return order.getId();
     }
 
@@ -53,10 +57,10 @@ public class OrderService {
         // 주문 췩소
         order.cancel();
     }
+
     // 검색
-    /*
     public List<Order> findOrders(OrderSearch orderSearch) {
         return orderRepository.findAll(orderSearch);
     }
-     */
+
 }
